@@ -8,11 +8,7 @@
 	<property name="ireport.jasperserver.report.resource" value="/public/Samples/Reports/Blank_A4_Landscape_files/main_jrxml"/>
 	<property name="ireport.jasperserver.reportUnit" value="/public/Samples/Reports/Blank_A4_Landscape"/>
 	<queryString language="SQL">
-		<![CDATA[select  "Sales"."SalesOrderDetail"."ProductID",
- "Sales"."SalesOrderDetail"."CarrierTrackingNumber",
- "Sales"."SalesOrderDetail"."UnitPrice" ,
-  "Sales"."SalesOrderDetail"."LineTotal" ,
-  "Sales"."SalesOrderDetail"."ModifiedDate",
+		<![CDATA[select  
   string_agg(concat(OrderQty, '[',SalesOrderID,']'),';') as "Aggr"
  from Sales.SalesOrderDetail
  group by ProductID, CarrierTrackingNumber, UnitPrice, LineTotal, ModifiedDate]]>
