@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 7.5.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4_Landscape" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c112f300-23b4-47f9-bbe2-d14087af3d3a">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="AdWorks2019"/>
+	<property name="ireport.jasperserver.url" value="http://localhost:8080/jasperserver-pro/"/>
+	<property name="ireport.jasperserver.user" value="superuser"/>
+	<property name="ireport.jasperserver.report.resource" value="/public/Samples/Reports/Blank_A4_Landscape_files/main_jrxml"/>
+	<property name="ireport.jasperserver.reportUnit" value="/public/Samples/Reports/Blank_A4_Landscape"/>
+	<queryString language="SQL">
+		<![CDATA[select  "Sales"."SalesOrderDetail"."ProductID",
+ "Sales"."SalesOrderDetail"."CarrierTrackingNumber",
+ "Sales"."SalesOrderDetail"."UnitPrice" ,
+  "Sales"."SalesOrderDetail"."LineTotal" ,
+  "Sales"."SalesOrderDetail"."ModifiedDate",
+  string_agg(concat(OrderQty, '[',SalesOrderID,']'),';') as "Aggr"
+ from Sales.SalesOrderDetail
+ group by ProductID, CarrierTrackingNumber, UnitPrice, LineTotal, ModifiedDate]]>
+	</queryString>
+	<field name="ProductID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="ProductID"/>
+	</field>
+	<field name="CarrierTrackingNumber" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CarrierTrackingNumber"/>
+	</field>
+	<field name="UnitPrice" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="UnitPrice"/>
+	</field>
+	<field name="LineTotal" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="LineTotal"/>
+	</field>
+	<field name="ModifiedDate" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="ModifiedDate"/>
+	</field>
+	<field name="Aggr" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Aggr"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="50">
+			<staticText>
+				<reportElement x="0" y="0" width="137" height="30" uuid="33325fb1-e08f-45b6-94d7-2b7ac3e7965a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="13b7317b-a15c-47e8-9191-f9482a513fdb"/>
+				</reportElement>
+				<text><![CDATA[ProductID]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="137" height="30" uuid="e6c2b1da-34d3-42e7-892f-6a855efb3e66">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="13b7317b-a15c-47e8-9191-f9482a513fdb"/>
+				</reportElement>
+				<text><![CDATA[ProductID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="539" y="0" width="253" height="30" uuid="10414741-9d47-4fea-9cf5-c0ee7930987c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="30862840-d070-4ab8-87a9-42abd25b29b1"/>
+				</reportElement>
+				<text><![CDATA[Aggr]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="137" height="30" uuid="2150c3a1-8c22-47f3-a22f-95547a6de55b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="13b7317b-a15c-47e8-9191-f9482a513fdb"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{ProductID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="0" width="133" height="30" uuid="4b4294b3-bcea-4dc5-a994-be724eefc3e1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e04c602b-8377-48f7-abfb-4dd5eb76a5d9"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{UnitPrice}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="273" y="0" width="133" height="30" uuid="df2513d4-d016-475e-be33-210ad6a23c38">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="761fb763-b38e-4ef6-aac9-1e5e616e183e"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{LineTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="406" y="0" width="133" height="30" uuid="bbcd947a-0ed8-4d64-abe5-7136da493981">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f78f29ba-3027-4c9e-8458-a9183e1b8b5a"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{ModifiedDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="539" y="0" width="253" height="30" uuid="817cd56a-9a50-4161-b04f-091b4628fab0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="30862840-d070-4ab8-87a9-42abd25b29b1"/>
+				</reportElement>
+				<textElement>
+					<font fontName="ArialBoldFontFont"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Aggr}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
